@@ -46,7 +46,7 @@ provide('setAliveValue', setAliveValue)
     .scroll_box{
       overflow-y: scroll;
       min-height: 100%;
-      padding-right: 4px;
+      padding-right: 20px;
       margin-right: -17px;
     }
   }
