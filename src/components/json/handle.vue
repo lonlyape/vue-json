@@ -8,7 +8,7 @@
     <div class="value_box" contenteditable>
       <div class="border_box">
         <div class="content_box">
-          <pre><code data-language="JSON">{{ showValue }}</code></pre>
+          <pre><code data-language="JSON" ref="codeCom">{{ showValue }}</code></pre>
         </div>
       </div>
     </div>
@@ -20,7 +20,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+
+const codeCom = ref()
 
 
 const props = defineProps<{
@@ -43,8 +45,7 @@ const showValue = computed(() => {
 })
 
 function copyFun() {
-  let text = showValue.value
-  text = typeof text === 'object' ? JSON.stringify(text) : text
+  let text = codeCom.value.innerText
   if (navigator.clipboard) {
     // clipboard api 复制
     navigator.clipboard.writeText(text);
