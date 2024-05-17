@@ -2,52 +2,102 @@
   <div class="lonlyape-json">
     <div class="content_box">
       <div class="scroll_box">
-        <item :data="modelValue"/>
+        <a class="button_item total_btn" @click.prevent="setBaseAliveValue">
+          全局
+        </a>
+        <div>{</div>
+        <item :data="modelValue" :level="1" />
+        <div>}</div>
       </div>
     </div>
-    <handle :value="aliveValue"></handle>
+    <handle :value="aliveValue" ref="handleRef"></handle>
   </div>
 </template>
 <script setup lang="ts">
-import { provide, Ref, ref } from 'vue';
+import { onBeforeMount, provide, Ref, ref, watch } from 'vue';
 import item from './view-item.vue'
 import handle from './handle.vue'
 type Props = {
-  imgKeys?: string[]
+  imgKeys?: string[],
+  expandLevel?: number
 }
+const handleRef = ref()
+const mainKey = 'LONLYAPE-JSON'
 const modelValue = defineModel()
 
 const props = defineProps<Props>()
 
 provide('imgKeys', props.imgKeys)
+provide('topProps', props)
+provide('mainKey', mainKey)
 
-const aliveValue:Ref<any> = ref()
+const aliveValue: Ref<any> = ref()
 
-function setAliveValue(value:any) {
+function setAliveValue(value: any) {
   aliveValue.value = value
+  handleRef.value && (handleRef.value.hiddenB = false)
 }
+
+function setBaseAliveValue() {
+  let data = {} as any
+  data[mainKey] = modelValue.value
+  setAliveValue(data)
+  setTimeout(()=>{
+    handleRef.value.hiddenB = false
+  })
+}
+
+onBeforeMount(() => {
+  setBaseAliveValue()
+})
+watch(modelValue, () => {
+  setBaseAliveValue()
+})
 
 provide('setAliveValue', setAliveValue)
 </script>
-<style lang="scss" scoped="lonlyape-json">
-.lonlyape-json{
+<style lang="scss" bundle>
+.lonlyape-json {
   width: 100%;
   height: 100%;
+  display: flex;
+  font-size: 14px;
+  color: #232323;
+  overflow-y: auto;
   padding: 10px 10px;
   padding-right: 20px;
-  font-size: 14px;
-  background-color: rgba($color: #ffffff, $alpha: .85);
-  overflow-y: auto;
-  display: flex;
   box-sizing: border-box;
-  .content_box{
-    overflow: hidden;
+  background-color: rgba($color: #ffffff, $alpha: .85);
+
+  .content_box {
     flex: 1;
-    .scroll_box{
+    overflow: hidden;
+
+    .scroll_box {
+      height: 100%;
       overflow-y: scroll;
-      min-height: 100%;
-      padding-right: 20px;
       margin-right: -17px;
+      padding-right: 20px;
+      .total_btn{
+        float: right;
+      }
+    }
+  }
+
+  .button_item {
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    color: #232323;
+    display: inline-block;
+    border: 1px solid #979797;
+
+    &:hover {
+      $color: #7095fa;
+      border-color: $color;
+      background-color: $color;
+      color: #fff;
     }
   }
 }

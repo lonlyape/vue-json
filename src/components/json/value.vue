@@ -12,7 +12,7 @@
   </template>
   <template v-else>
     <span class="bl_c">{</span>
-    <item :imgKeys="imgKeys" :data="value" line v-if="isOpend" />
+    <item :imgKeys="imgKeys" :data="value" :level="level + 1" line v-if="isOpend" />
     <span class="bl_c " v-else>...</span>
     <span class="bl_c">}</span>
   </template>
@@ -22,6 +22,7 @@ import item from './view-item.vue'
 import { _typeof } from './utils.ts'
 import { computed, ref } from 'vue'
 type Props = {
+  level: number,
   value: any,
   isOpend: boolean,
   isImgKey?: boolean,
@@ -63,7 +64,7 @@ function mouseleave() {
 }
 
 </script>
-<style lang="scss" scoped="value_com">
+<style lang="scss" scoped="value_com" bundle>
 .value_span {
   display: inline-block;
   vertical-align: baseline;

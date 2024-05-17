@@ -1,9 +1,35 @@
-# Vue 3 + TypeScript + Vite
+# vue-json-lonlyape
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> vue json 组件
 
-## Recommended Setup
+## use
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+```bash
+# install
+npm install vue-json-lonlyape --save
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+# main.js
+......
+import Json from 'vue-json-lonlyape'
+app.use(Json)
+......
+
+or
+# xxx.vue
+......
+import { Json } from 'vue-json-lonlyape'
+......
+components: {
+  Json
+}
+......
+```
+
+
+# 参数
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| modelValue | 要展示的json数据 | Object | - |
+| imgKeys | 图片字段 | string[] |  [] |
+| expandLevel | 初始展开层级 | number |  0 |

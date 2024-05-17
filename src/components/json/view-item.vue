@@ -1,20 +1,20 @@
 <template>
   <div class="json_item" :class="{'line':line}">
-    <KeyCom :keyStr="k" :value="data[k]" v-for="k in keys"></KeyCom>
+    <KeyCom :keyStr="k" :value="data[k]" v-for="k in keys" :level="level"></KeyCom>
   </div>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
 import KeyCom from './key.vue'
 
-type Props = { data: any , line?: boolean}
+type Props = { data: any , line?: boolean, level: number}
 const props = defineProps<Props>()
 
 const keys = computed(() => {
   return Object.keys(props.data)
 })
 </script>
-<style lang="scss" scoped="json_item">
+<style lang="scss" scoped="json_item" bundle>
 .json_item {
   padding-left: 14px;
   position: relative;

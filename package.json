@@ -1,22 +1,42 @@
 {
-  "name": "vue-json",
-  "private": true,
-  "version": "0.0.0",
+  "name": "vue-json-lonlyape",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
+  "description": "a json viewer for vue3",
+  "author": "lonlyape <lonlyape@gmail.com>",
+  "main": "dist/vue-json-lonlyape.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc && vite build --mode comp",
     "preview": "vite preview"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lonlyape/vue-json.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vue-json",
+    "vue-json-lonlyape",
+    "vue-json-lonlyape-v3",
+    "json"
+  ],
   "dependencies": {
-    "rainbow-code": "^2.1.7",
     "vue": "^3.4.26"
   },
   "devDependencies": {
+    "@types/node": "^20.12.12",
     "@vitejs/plugin-vue": "^5.0.4",
+    "deepmerge": "^4.3.1",
+    "less": "^4.2.0",
     "sass": "^1.76.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
+    "vite-plugin-vue-style-bundler": "^1.0.9",
     "vue-tsc": "^2.0.6"
   }
 }
