@@ -102,68 +102,72 @@ defineExpose({
 })
 
 </script>
-<style lang="scss" scoped="handle_view" bundle>
-.handle_view {
-  width: 320px;
-  display: flex;
-  color: #232323;
-  position: relative;
-  box-sizing: border-box;
-  flex-direction: column;
-  transition: width 0.4s ease-in-out;
-  overflow: hidden;
-
-  &.hidden {
-    width: 0px;
-  }
-
-  .close_span {
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-  }
-
-  .ml-10 {
-    margin-left: 10px;
-  }
-
-  .value_box {
-    flex: 1;
-    width: 300px;
-    overflow: hidden;
-    border-radius: 4px;
+<style lang="scss" bundle scoped='false'>
+.lonlyape-json {
+  .handle_view {
+    width: 320px;
+    display: flex;
+    color: #232323;
+    position: relative;
     box-sizing: border-box;
-    box-shadow: 0 0 4px 0 #979797;
-    .border_box {
-      padding: 10px;
-      overflow: hidden;
-      height: calc(100% - 20px);
+    flex-direction: column;
+    transition: width 0.4s ease-in-out;
+    overflow: hidden;
+
+    &.hidden {
+      width: 0px;
     }
 
-    .content_box {
-      height: 100%;
-      padding: 0 10px 0 6px;
-      overflow-y: scroll;
-      margin-right: -28px;
+    .close_span {
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+    }
 
-      pre {
-        margin: 0;
+    .ml-10 {
+      margin-left: 10px;
+    }
+
+    .value_box {
+      flex: 1;
+      width: 300px;
+      overflow: hidden;
+      border-radius: 4px;
+      box-sizing: border-box;
+      box-shadow: 0 0 4px 0 #979797;
+
+      .border_box {
+        padding: 10px;
+        overflow: hidden;
+        height: calc(100% - 20px);
+      }
+
+      .content_box {
+        height: 100%;
+        padding: 0 10px 0 6px;
+        overflow: hidden;
+        overflow-y: scroll;
+        margin-right: -28px;
+
+        pre {
+          margin: 0;
+        }
+      }
+
+      code {
+        height: 100%;
+        overflow: hidden;
+
+        &.break {
+          word-break: break-all;
+          white-space: pre-wrap;
+        }
       }
     }
 
-    code {
-      height: 100%;
-      overflow: hidden;
-
-      &.break {
-        word-break: break-all;
-        white-space: pre-wrap;
-      }
+    .button_box {
+      padding: 10px 0;
     }
-  }
-
-  .button_box {
-    padding: 10px 0;
   }
 }
 </style>

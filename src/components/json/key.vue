@@ -10,7 +10,7 @@
     </span>
     <span class="key_span" @click.prevent="keyClick">{{ keyStr }}</span>
     <span class="key_span">:</span>
-    <Value :value="value" :isOpend="isOpend" :isImgKey="isImg"  :level="level" />
+    <Value :value="value" :isOpend="isOpend" :isImgKey="isImg" :level="level" />
   </div>
 </template>
 <script setup lang="ts">
@@ -21,7 +21,7 @@ import { computed, inject, Ref, ref, watch } from 'vue';
 type Props = { keyStr: string, value: any, level: number }
 const props = defineProps<Props>()
 const imgKeys: string[] | undefined = inject('imgKeys')
-const topProps:any = inject('topProps')
+const topProps: any = inject('topProps')
 const setAliveValue: ((value: any) => void) | undefined = inject('setAliveValue')
 
 const helf = computed(() => {
@@ -31,10 +31,10 @@ const helf = computed(() => {
 })
 
 
-const expandLevel:Ref<number> = computed(() => topProps.expandLevel)
+const expandLevel: Ref<number> = computed(() => topProps.expandLevel)
 const isOpend = ref(expandLevel.value ? (props.level <= expandLevel.value) : false)
 
-watch( expandLevel, () => {
+watch(expandLevel, () => {
   isOpend.value = expandLevel ? (props.level <= expandLevel.value) : false
 })
 
@@ -56,34 +56,37 @@ function keyClick() {
 }
 
 </script>
-<style lang="scss" scoped="key_com" bundle>
+<style lang="scss" bundle scoped='false'>
 $ms: 4px;
 
-.key_com {
-  padding-left: 10px;
+.lonlyape-json {
 
-  &.flex_box {
-    display: flex;
-  }
+  .key_com {
+    padding-left: 10px;
 
-  .icon_span {
-    cursor: pointer;
-    font-size: 12px;
-    margin-left: -16px;
-    margin-right: $ms;
+    &.flex_box {
+      display: flex;
+    }
 
-    &.down {
-      .icon {
-        transform: rotateZ(90deg);
+    .icon_span {
+      cursor: pointer;
+      font-size: 12px;
+      margin-left: -16px;
+      margin-right: $ms;
+
+      &.down {
+        .icon {
+          transform: rotateZ(90deg);
+        }
       }
     }
-  }
 
-  .key_span {
-    cursor: pointer;
-    color: #8f8403;
-    margin-right: $ms;
+    .key_span {
+      cursor: pointer;
+      color: #8f8403;
+      margin-right: $ms;
 
+    }
   }
 }
 </style>

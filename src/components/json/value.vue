@@ -64,83 +64,85 @@ function mouseleave() {
 }
 
 </script>
-<style lang="scss" scoped="value_com" bundle>
-.value_span {
-  display: inline-block;
-  vertical-align: baseline;
-  position: relative;
-
-  >span {
+<style lang="scss" bundle scoped='false'>
+.lonlyape-json {
+  .value_span {
+    display: inline-block;
     vertical-align: baseline;
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-  }
-}
+    position: relative;
 
-.bl_c,
-.string {
-  color: #232323;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.string {
-  display: inline-block;
-  word-wrap: break-word;
-  word-break: break-all;
-}
-
-.boolean {
-  color: #004cfe;
-}
-
-.number {
-  color: #31b505;
-}
-
-.null,
-.undefined {
-  color: #ff0000;
-}
-
-// popper
-.popper_box {
-  background-color: #ffffff;
-  color: #232323;
-  position: absolute;
-  padding: 10px;
-  padding-bottom: 8px;
-  top: 24px;
-  z-index: 40000;
-
-  img {
-    width: 200px;
+    >span {
+      vertical-align: baseline;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+    }
   }
 
-  #json_arrow {
+  .bl_c,
+  .string {
+    color: #232323;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .string {
+    display: inline-block;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .boolean {
+    color: #004cfe;
+  }
+
+  .number {
+    color: #31b505;
+  }
+
+  .null,
+  .undefined {
+    color: #ff0000;
+  }
+
+  // popper
+  .popper_box {
+    background-color: #ffffff;
+    color: #232323;
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: inherit;
-    visibility: hidden;
-    top: -4px;
-    left: 10px;
+    padding: 10px;
+    padding-bottom: 8px;
+    top: 24px;
+    z-index: 40000;
 
-    &::before {
+    img {
+      width: 200px;
+    }
+
+    #json_arrow {
       position: absolute;
       width: 8px;
       height: 8px;
       background: inherit;
-      visibility: visible;
-      content: '';
-      transform: rotate(45deg);
-    }
-  }
+      visibility: hidden;
+      top: -4px;
+      left: 10px;
 
+      &::before {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: inherit;
+        visibility: visible;
+        content: '';
+        transform: rotate(45deg);
+      }
+    }
+
+  }
 }
 </style>

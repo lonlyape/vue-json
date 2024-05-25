@@ -56,9 +56,10 @@ watch(modelValue, () => {
 
 provide('setAliveValue', setAliveValue)
 </script>
-<style lang="scss" bundle>
+<style lang="scss" bundle scoped='false'>
 .lonlyape-json {
   width: 100%;
+  min-height: 300px;
   height: 100%;
   display: flex;
   font-size: 14px;
