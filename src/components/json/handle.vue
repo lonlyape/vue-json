@@ -11,11 +11,11 @@
           fill="#999999" p-id="973"></path>
       </svg>
     </span>
-    <div class="label_value ml-10" v-if="key != mainKey">
+    <div class="label_value ml-10 mb-10" v-if="key != mainKey">
       <span>key : </span>
       <span>{{ key }}</span>
     </div>
-    <div class="ml-10">value : </div>
+    <div class="ml-10 mb-10">value : </div>
     <div class="value_box ml-10" contenteditable>
       <div class="border_box">
         <div class="content_box">
@@ -39,7 +39,8 @@ const codeCom = ref()
 const hiddenB = ref(false)
 
 const props = defineProps<{
-  value: any
+  value: any,
+  width: string
 }>();
 
 const key = computed(() => {
@@ -105,8 +106,8 @@ defineExpose({
 <style lang="scss" bundle scoped='false'>
 .lonlyape-json {
   .handle_view {
-    width: 320px;
     display: flex;
+    width: v-bind(width);
     color: #232323;
     position: relative;
     box-sizing: border-box;
@@ -128,9 +129,13 @@ defineExpose({
       margin-left: 10px;
     }
 
+    .mb-10 {
+      margin-bottom: 10px;
+    }
+
     .value_box {
       flex: 1;
-      width: 300px;
+      width: calc(100% - 30px);
       overflow: hidden;
       border-radius: 4px;
       box-sizing: border-box;
@@ -147,7 +152,7 @@ defineExpose({
         padding: 0 10px 0 6px;
         overflow: hidden;
         overflow-y: scroll;
-        margin-right: -28px;
+        margin-right: -34px;
 
         pre {
           margin: 0;
@@ -167,6 +172,9 @@ defineExpose({
 
     .button_box {
       padding: 10px 0;
+      .button_item{
+        cursor: pointer;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="lonlyape-json">
+  <div class="lonlyape-json" ref="lonlyapeJsonRef">
     <div class="content_box">
       <div class="scroll_box">
         <a class="button_item total_btn" @click.prevent="setBaseAliveValue">
@@ -10,22 +10,36 @@
         <div>}</div>
       </div>
     </div>
-    <handle :value="aliveValue" ref="handleRef"></handle>
+    <handle :value="aliveValue" ref="handleRef" :width="hw"></handle>
   </div>
 </template>
 <script setup lang="ts">
-import { onBeforeMount, provide, Ref, ref, watch } from 'vue';
+import { nextTick ,onBeforeMount, onMounted, provide, Ref, ref, watch, withDefaults } from 'vue';
 import item from './view-item.vue'
 import handle from './handle.vue'
 type Props = {
   imgKeys?: string[],
-  expandLevel?: number
+  expandLevel?: number,
+  handleSpan?: number
 }
 const handleRef = ref()
 const mainKey = 'LONLYAPE-JSON'
 const modelValue = defineModel()
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  handleSpan: 12
+})
+
+const totalSpan = 24
+const lonlyapeJsonRef = ref()
+const hw:Ref<string> = ref('')
+onMounted(() => {
+  nextTick(() => {
+    let tw = lonlyapeJsonRef?.value.clientWidth
+    let rhw = props.handleSpan / totalSpan * tw
+    hw.value = rhw + 'px'
+  })
+})
 
 provide('imgKeys', props.imgKeys)
 provide('topProps', props)
@@ -65,8 +79,7 @@ provide('setAliveValue', setAliveValue)
   font-size: 14px;
   color: #232323;
   overflow-y: auto;
-  padding: 10px 10px;
-  padding-right: 20px;
+  padding: 20px;
   box-sizing: border-box;
   background-color: rgba($color: #ffffff, $alpha: .85);
 
@@ -77,7 +90,7 @@ provide('setAliveValue', setAliveValue)
     .scroll_box {
       height: 100%;
       overflow-y: scroll;
-      margin-right: -17px;
+      margin-right: -24px;
       padding-right: 20px;
       .total_btn{
         float: right;

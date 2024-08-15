@@ -33,3 +33,4 @@ components: {
 | modelValue | 要展示的json数据 | Object | - |
 | imgKeys | 图片字段 | string[] |  [] |
 | expandLevel | 初始展开层级 | number |  0 |
+| handleSpan | 右侧宽度，1-24，24是整宽度 | number |  12 |
