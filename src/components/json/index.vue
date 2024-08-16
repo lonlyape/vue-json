@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { nextTick ,onBeforeMount, onMounted, provide, Ref, ref, watch, withDefaults } from 'vue';
+import { nextTick, onBeforeMount, onMounted, provide, Ref, ref, watch, withDefaults } from 'vue';
 import item from './view-item.vue'
 import handle from './handle.vue'
 type Props = {
@@ -32,11 +32,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const totalSpan = 24
 const lonlyapeJsonRef = ref()
-const hw:Ref<string> = ref('')
+const hw: Ref<string> = ref('')
 onMounted(() => {
   nextTick(() => {
     let tw = lonlyapeJsonRef?.value.clientWidth
-    let rhw = props.handleSpan / totalSpan * tw
+    let rhw = props.handleSpan / totalSpan * (tw - 40)
     hw.value = rhw + 'px'
   })
 })
@@ -56,7 +56,7 @@ function setBaseAliveValue() {
   let data = {} as any
   data[mainKey] = modelValue.value
   setAliveValue(data)
-  setTimeout(()=>{
+  setTimeout(() => {
     handleRef.value.hiddenB = false
   })
 }
@@ -92,7 +92,8 @@ provide('setAliveValue', setAliveValue)
       overflow-y: scroll;
       margin-right: -24px;
       padding-right: 20px;
-      .total_btn{
+
+      .total_btn {
         float: right;
       }
     }

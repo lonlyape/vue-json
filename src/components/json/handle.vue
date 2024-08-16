@@ -1,5 +1,5 @@
 <template>
-  <div class="handle_view" :class="{ 'hidden': hiddenB }" v-if="key">
+  <div class="handle_view" :class="{ 'hidden': hiddenB }" v-if="key" :style="{ width: width }">
     <span class="close_span" @click.prevent="toggleHidden">
       <svg class="icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
         viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="971">
@@ -107,7 +107,6 @@ defineExpose({
 .lonlyape-json {
   .handle_view {
     display: flex;
-    width: v-bind(width);
     color: #232323;
     position: relative;
     box-sizing: border-box;
@@ -116,7 +115,7 @@ defineExpose({
     overflow: hidden;
 
     &.hidden {
-      width: 0px;
+      width: 0px !important;
     }
 
     .close_span {
